@@ -44,6 +44,8 @@ def main():
     special_filepaths = get_special_paths(args.fromdir)
     if args.todir:
         copy_to(special_filepaths, args.todir)
+    elif args.tozip:
+        zip_to(special_filepaths, args.tozip)
     else:
         for filepath in special_filepaths:
             print(filepath)
@@ -60,6 +62,13 @@ def copy_to(paths, dir):
     for filepath in paths:
         shutil.copy(filepath, dir)
 
+
+def zip_to(paths, zippath):
+    paths = list(paths)
+    command = "zip -j {} {}".format(zippath, ' '.join(paths))
+    print("Command I'm going to do: ")
+    print(command)
+    subprocess.Popen(command.split())
 
 
 if __name__ == "__main__":
