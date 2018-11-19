@@ -24,7 +24,7 @@ import argparse
 def main():
     # This snippet will help you get started with the argparse module.
     parser = argparse.ArgumentParser()
-    parser.add_argument('--todir', default=os.getcwd(),
+    parser.add_argument('--todir',
                         help='dest dir for special files')
     parser.add_argument('--tozip', help='dest zipfile for special files')
     # TODO need an argument to pick up 'from_dir'
@@ -42,7 +42,11 @@ def main():
     # +++your code here+++
     # Call your functions
     special_filepaths = get_special_paths(args.fromdir)
-    copy_to(special_filepaths, args.todir)
+    if args.todir:
+        copy_to(special_filepaths, args.todir)
+    else:
+        for filepath in special_filepaths:
+            print(filepath)
 
 
 def get_special_paths(dir):
