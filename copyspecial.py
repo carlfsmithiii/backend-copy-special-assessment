@@ -45,7 +45,7 @@ def main():
     if args.todir:
         copy_to(special_filepaths, args.todir)
     elif args.tozip:
-        zip_to(special_filepaths, args.tozip)
+        zip_to(special_filepaths, os.path.join(os.getcwd(), args.tozip))
     else:
         for filepath in special_filepaths:
             print(filepath)
