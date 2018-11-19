@@ -41,7 +41,8 @@ def main():
 
     # +++your code here+++
     # Call your functions
-    special_filenames = get_special_paths(args.fromdir)
+    special_filepaths = get_special_paths(args.fromdir)
+    copy_to(special_filepaths, args.todir)
 
 
 def get_special_paths(dir):
